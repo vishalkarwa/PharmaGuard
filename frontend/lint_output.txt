@@ -1,0 +1,51 @@
+
+C:\Users\visha\OneDrive\Desktop\pharmaguard\frontend\src\components\Background.tsx
+  14:48  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @typescript-eslint/no-explicit-any
+  17:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\visha\OneDrive\Desktop\pharmaguard\frontend\src\components\Background.tsx:17:9
+  15 |
+  16 |     useEffect(() => {
+> 17 |         setIsClient(true);
+     |         ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  18 |         const generated = Array.from({ length: particlesCount }).map((_, i) => ({
+  19 |             id: i,
+  20 |             size: randomBetween(2, 6),  react-hooks/set-state-in-effect
+
+C:\Users\visha\OneDrive\Desktop\pharmaguard\frontend\src\components\Capsule3D.tsx
+  19:15  warning  'state' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\visha\OneDrive\Desktop\pharmaguard\frontend\src\components\HowItWorks.tsx
+  4:10  warning  'motion' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\visha\OneDrive\Desktop\pharmaguard\frontend\src\components\SmoothScroller.tsx
+   4:1   error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  11:13  error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+
+C:\Users\visha\OneDrive\Desktop\pharmaguard\frontend\src\components\UploadSimulator.tsx
+   4:18  warning  'AnimatePresence' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+  44:49  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\visha\OneDrive\Desktop\pharmaguard\frontend\src\components\UploadSimulator.tsx:44:49
+  42 |     // Sync step string with progress percentage
+  43 |     useEffect(() => {
+> 44 |         if (progress > 20 && currentStep === 0) setCurrentStep(1);
+     |                                                 ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  45 |         if (progress > 50 && currentStep === 1) setCurrentStep(2);
+  46 |         if (progress > 80 && currentStep === 2) setCurrentStep(3);
+  47 |     }, [progress, currentStep]);  react-hooks/set-state-in-effect
+
+✖ 8 problems (5 errors, 3 warnings)
+
